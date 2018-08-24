@@ -8,7 +8,7 @@
       "type": "shell",
       "command": "clang",
       "args": [
-        "-g", "8.cpp",
+        "-g", "9.cpp",
         "-Wno-c++11-extensions",
         "-lc++"
       ],
