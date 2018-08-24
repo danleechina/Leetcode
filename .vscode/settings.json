@@ -25,6 +25,7 @@
     "bitset": "cpp",
     "chrono": "cpp",
     "limits": "cpp",
-    "ratio": "cpp"
+    "ratio": "cpp",
+    "__locale": "cpp"
   }
 }
