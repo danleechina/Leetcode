@@ -26,6 +26,9 @@
     "chrono": "cpp",
     "limits": "cpp",
     "ratio": "cpp",
-    "__locale": "cpp"
+    "__locale": "cpp",
+    "iosfwd": "cpp",
+    "utility": "cpp",
+    "ios": "cpp"
   }
 }

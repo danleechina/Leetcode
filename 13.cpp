@@ -12,7 +12,7 @@ public:
         if (nextIndex < s.length()) {
           if (s[index] == 'C' && s[nextIndex] == 'D') {
             result += 400;
-            index ++;
+            index += 2;
             continue;
           } else if (s[index] == 'C' && s[nextIndex] == 'M') {
             result += 900;
@@ -71,5 +71,6 @@ int main(int argc, char const *argv[])
   std::cout << sln.romanToInt("IX") << std::endl;
   std::cout << sln.romanToInt("LVIII") << std::endl;
   std::cout << sln.romanToInt("MCMXCIV") << std::endl;
+  std::cout << sln.romanToInt("MCDLXXVI") << std::endl;
   return 0;
 }
