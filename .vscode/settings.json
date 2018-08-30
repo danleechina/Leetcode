@@ -32,6 +32,8 @@
     "ios": "cpp",
     "ostream": "cpp",
     "iostream": "cpp",
-    "map": "cpp"
+    "map": "cpp",
+    "__functional_03": "cpp",
+    "functional": "cpp"
   }
 }
