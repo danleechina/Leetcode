@@ -8,9 +8,10 @@
       "type": "shell",
       "command": "clang",
       "args": [
-        "-g", "14.cpp",
+        "-g", "17.cpp",
         "-Wno-c++11-extensions",
-        "-lc++"
+        "-lc++",
+        "-std=c++11"
       ],
       "group": {
         "kind": "build",
