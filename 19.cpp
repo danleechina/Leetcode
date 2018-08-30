@@ -17,20 +17,25 @@ struct ListNode {
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-      vector<ListNode*> dup;
-      auto tmp = head;
-      while(tmp) {
-        dup.push_back(tmp);
-        tmp = tmp->next;
+      ListNode * current = head;
+      int i = 0;
+      while (i < n) {
+        current = current->next;
+        i ++;
       }
-      int lengthOfNode = dup.size();
-      auto toBeDeleted = dup[lengthOfNode - n];
-      if (toBeDeleted == dup[0]) {
-        return toBeDeleted->next;
+      ListNode * prevN1 = nullptr;
+      ListNode * prevN = head;
+      while (current) {
+        current = current->next;
+        prevN1 = prevN;
+        prevN = prevN->next;
+      }
+      if (prevN1 == nullptr) {
+        return head->next;
       } else {
-        auto preToBeDeleted = dup[lengthOfNode - n - 1];
-        preToBeDeleted->next = toBeDeleted->next;
+        prevN1->next = prevN->next;
         return head;
       }
+
     }
 };
