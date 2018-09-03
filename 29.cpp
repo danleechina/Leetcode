@@ -10,8 +10,8 @@ using namespace std;
 class Solution {
 public:
     int divide(int dividend, int divisor) {
-      if (divisor == INT_MIN) return 0;
       if (divisor == dividend) return 1;
+      if (divisor == INT_MIN) return 0;
       bool sign = true;
       if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)) sign = false;
       if (divisor == 1) return dividend;
