@@ -36,6 +36,7 @@
     "__functional_03": "cpp",
     "functional": "cpp",
     "stack": "cpp",
-    "deque": "cpp"
+    "deque": "cpp",
+    "memory": "cpp"
   }
 }
