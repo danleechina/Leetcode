@@ -19,78 +19,34 @@ struct TreeNode {
 
 class Solution {
 public:
-    TreeNode* copyATree(TreeNode* root) {
-        if (!root) return nullptr;
-        TreeNode *newRoot = new TreeNode(root->val);
-        newRoot->left = copyATree(root->left);
-        newRoot->right = copyATree(root->right);
-        return newRoot;
-    }
-
-    void generateTrees(int minValue, int maxValue, vector<TreeNode*> &result) {
+    int generateTrees(int minValue, int maxValue) {
+        int total = 0;
         for (int i = minValue; i <= maxValue; i ++) {
-            vector<TreeNode*> leftResult;
-            generateTrees(minValue, i - 1, leftResult);
-            vector<TreeNode*> rightResult;
-            generateTrees(i + 1, maxValue, rightResult);
-            // cout << leftResult.size() << " " << rightResult.size() << endl;
-            if (leftResult.size() == 0) {
-                if (rightResult.size() == 0) {
-                    TreeNode *root = new TreeNode(i);
-                    result.push_back(root);
-                }
-                for (auto r: rightResult) {
-                    TreeNode *root = new TreeNode(i);
-                    root->right = r;
-                    result.push_back(root);
-                }
-            } else if (rightResult.size() == 0) {
-                if (leftResult.size() == 0) {
-                    TreeNode *root = new TreeNode(i);
-                    result.push_back(root);
-                }
-                for (auto l: leftResult) {
-                    TreeNode *root = new TreeNode(i);
-                    root->left = l;
-                    result.push_back(root);
-                }
+            int leftResult = generateTrees(minValue, i - 1);
+            int rightResult = generateTrees(i + 1, maxValue);
+            if (leftResult == 0) {
+                total += (rightResult == 0 ? 1 : rightResult);
+            } else if (rightResult == 0) {
+                total += (leftResult == 0 ? 1 : leftResult);
             } else {
-                for (int i = 0; i < leftResult.size(); i ++) {
-                    for (int j = 0; j < rightResult.size(); j ++) {
-                        TreeNode *root = new TreeNode(i);
-                        root->left = i == leftResult.size() - 1 ? leftResult[i] : copyATree(leftResult[i]);
-                        root->right = j == rightResult.size() - 1 ? rightResult[j] : copyATree(rightResult[j]);
-                        result.push_back(root);
-                    }
-                }
+                total += leftResult * rightResult;
             }
         }
+        return total;
     }
 
-    vector<TreeNode*> generateTrees(int n) {
-        vector<TreeNode*> result;
-        generateTrees(1, n, result);
+    int numTrees(int n) {
+        cout << INT_MAX;
+        if (n == 0) return 1;
+        int result = generateTrees(1, n);
         return result;
     }
 };
 
-void printTree(TreeNode *root) {
-    if (!root) {
-        cout << "null" << " ";
-        return;
-    }
-    printTree(root->left);
-    cout << root->val << " ";
-    printTree(root->right);
-}
-
 int main(int argc, char const *argv[])
 {
     Solution s;
-    auto res = s.generateTrees(2);
-    for (auto r: res) {
-        printTree(r);
-        cout << endl;
-    }
+    auto res = s.numTrees(3);
+    cout << res << endl;
     return 0;
 }
