@@ -9,7 +9,7 @@
       "command": "clang",
       "args": [
         "-g",
-        "archive4/165.cpp",
+        "archive4/164.cpp",
         "-Wno-c++11-extensions",
         "-lc++",
         "-std=c++11"
