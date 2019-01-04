@@ -18,25 +18,18 @@ public:
   {
     if (s.size() <= 10)
       return {};
-    set<string> res;
-    string tmp1, tmp2;
+    vector<string> res;
+    map<string, int> helper;
+    string tmp;
     for (int i = 0; i < s.size(); i++)
     {
-      tmp1 = s.substr(i, 10);
-      if (res.find(tmp1) != res.end())
+      tmp = s.substr(i, 10);
+      if (helper[tmp] == 1)
       {
-        continue;
+        res.push_back(tmp);
       }
-      for (int j = i + 1; j + 10 <= s.size(); j++)
-      {
-        tmp2 = s.substr(j, 10);
-        if (tmp1.compare(tmp2) == 0)
-        {
-          res.insert(tmp1);
-          break;
-        }
-      }
+      helper[tmp]++;
     }
-    return vector<string>(res.begin(), res.end());
+    return res;
   }
 };
