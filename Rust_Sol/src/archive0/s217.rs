@@ -3,10 +3,12 @@ pub fn print_hello() {
 }
 use std::collections::HashSet;
 
+struct Solution{}
+
 impl Solution {
     pub fn contains_duplicate(nums: Vec<i32>) -> bool {
       let len = nums.len();
       let a: HashSet<_> = nums.into_iter().collect();
-      a.len() == nums.len()
+      a.len() == len
     }
 }
