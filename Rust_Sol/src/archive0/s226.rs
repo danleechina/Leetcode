@@ -26,15 +26,18 @@ impl Solution {
         Some(v) => {
           let b = Rc::clone(&v);
           let mut v = v.borrow_mut();
+          let mut vl: Option<Rc<RefCell<TreeNode>>> = None;
+          let mut vr: Option<Rc<RefCell<TreeNode>>> = None;
           if let Some(lef) = &v.left {
+            vl = Some(Rc::clone(lef));
             Solution::invert_tree(Some(Rc::clone(lef)));
           }
           if let Some(right) = &v.right {
+            vr = Some(Rc::clone(right));
             Solution::invert_tree(Some(Rc::clone(right)));
           }
-          let mut vl = &mut v.left;
-          let mut vr = &mut v.right;
-          vl = None;
+          v.left = vr;
+          v.right = vl;
           return Some(b);
         },
         None => return None
