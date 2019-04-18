@@ -3,5 +3,6 @@ mod archive0;
 
 fn main() {
     // archive0::s226::Solution{};
-    println!("{:#032b}:::::{:#032b}:::::{:#032b}", -1, 1, -1 ^ 1);
+    let s = String::from("1111-");
+    println!("{}", s.parse::<i32>().unwrap())
 }
