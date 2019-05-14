@@ -4,10 +4,6 @@ struct NumArray {
 use std::cmp::min;
 use std::cmp::max;
 
-/** 
- * `&self` means the method takes an immutable reference.
- * If you need a mutable reference, change it to `&mut self` instead.
- */
 impl NumArray {
 
     fn new(nums: Vec<i32>) -> Self {
@@ -64,10 +60,3 @@ impl NumArray {
       return self.sum_nums[j] - self.sum_nums[i - 1];
     }
 }
-
-/**
- * Your NumArray object will be instantiated and called as such:
- * let obj = NumArray::new(nums);
- * obj.update(i, val);
- * let ret_2: i32 = obj.sum_range(i, j);
- */
